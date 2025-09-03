@@ -16,7 +16,7 @@ export const AuthorSection = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   I have a not-so-common relationship with Autodesk software, stemming from two distinct connections. 
                   Firstly, as an Autodesk employee, I have access to specific tools and benefits. Secondly, outside of my role, 
-                  I also maintain a separate Autodesk subscription for the AEC Collection, InfoDrainage, and ICM Standard.
+                  I also maintain a separate Autodesk subscription for the AEC Collection, InfoDrainage, and ICM Ultimate.
                 </p>
               </div>
               

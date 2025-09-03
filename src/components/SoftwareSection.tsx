@@ -22,8 +22,7 @@ const softwareCategories = [
     title: "ICM & InfoDrainage",
     description: "Advanced water infrastructure modeling and analysis tools",
     tools: [
-      { name: "ICM Standard", description: "Integrated catchment modeling for water infrastructure" },
-      { name: "ICM Ultimate", description: "Advanced 1D and 2D integrated catchment modeling" },
+      { name: "ICM Ultimate", description: "Advanced 1D and 2D integrated catchment modeling with comprehensive features" },
       { name: "InfoDrainage Standard", description: "Comprehensive drainage design and analysis" },
       { name: "InfoDrainage Ultimate", description: "Advanced drainage modeling and optimization" }
     ],

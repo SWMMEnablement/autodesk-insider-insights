@@ -20,7 +20,7 @@ export const Hero = () => {
               </h1>
               
               <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">
-                Why I Personally Invest in the AEC Collection, ICM Standard and InfoDrainage Subscriptions
+                Why I Personally Invest in the AEC Collection, ICM Ultimate and InfoDrainage Subscriptions
               </p>
             </div>
             
