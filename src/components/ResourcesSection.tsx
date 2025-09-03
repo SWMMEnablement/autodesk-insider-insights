@@ -13,20 +13,28 @@ const resources = [
     highlight: "Shape the Future"
   },
   {
+    title: "SWMM5.org Blog",
+    description: "Comprehensive resource for SWMM modeling insights, tutorials, and technical expertise covering 50 years of storm water management modeling experience.",
+    url: "https://swmm5.org",
+    icon: Award,
+    category: "Technical Blog",
+    highlight: "Expert Insights"
+  },
+  {
+    title: "LinkedIn Profile",
+    description: "Connect with Robert Dickinson - Autodesk Technologist specializing in ICM InfoWorks and SWMM Networks with Ruby, Python and AI Agents.",
+    url: "https://www.linkedin.com/in/robertdickinson",
+    icon: Users,
+    category: "Professional",
+    highlight: "50 Years EPASWMM"
+  },
+  {
     title: "CADD Microsystems",
     description: "Exceptional Autodesk reseller providing expert assistance with subscription needs and ensuring a seamless subscription journey.",
     url: "#",
     icon: Headphones,
     category: "Support",
     highlight: "Trusted Partner"
-  },
-  {
-    title: "Robert Dickinson's LinkedIn",
-    description: "Connect with the author - Autodesk Technologist specializing in ICM InfoWorks and SWMM Networks with Ruby, Python and AI Agents.",
-    url: "https://www.linkedin.com/in/robertdickinson",
-    icon: Users,
-    category: "Professional",
-    highlight: "50 Years EPASWMM"
   },
   {
     title: "Health Journey Article",
@@ -39,6 +47,7 @@ const resources = [
 ];
 
 const additionalLinks = [
+  { title: "SWMM5.org Blog", url: "https://swmm5.org" },
   { title: "Autodesk AEC Collection", url: "https://www.autodesk.com/collections/architecture-engineering-construction" },
   { title: "InfoDrainage", url: "https://www.autodesk.com/products/infodrainage" },
   { title: "ICM InfoWorks", url: "https://www.autodesk.com/products/infoworks-icm" },
