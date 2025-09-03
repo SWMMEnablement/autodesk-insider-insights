@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User } from "lucide-react";
-import heroCover from "@/assets/hero-cover.jpg";
+import heroCover from "@/assets/icm-infoworks-banner.jpg";
 
 export const Hero = () => {
   return (
@@ -40,7 +40,7 @@ export const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-2xl blur-3xl transform rotate-6" />
             <img 
               src={heroCover} 
-              alt="Engineering software visualization" 
+              alt="ICM InfoWorks integrated catchment modeling interface" 
               className="relative rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300"
             />
           </div>
