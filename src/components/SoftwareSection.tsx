@@ -30,14 +30,26 @@ const softwareCategories = [
     color: "from-accent to-accent-glow"
   },
   {
+    title: "Current Innovyze Tools",
+    description: "Active water modeling software with ongoing development and support",
+    tools: [
+      { name: "XPSWMM", description: "Comprehensive urban drainage modeling" },
+      { name: "InfoWater Pro", description: "Water distribution system modeling" },
+      { name: "InfoSWMM", description: "Storm water management modeling" },
+      { name: "InfoSewer", description: "Sewer system analysis and design" }
+    ],
+    icon: Database,
+    color: "from-accent to-accent-glow"
+  },
+  {
     title: "Legacy Innovyze Tools",
     description: "Established water modeling software with proven track record",
     tools: [
-      { name: "InfoSWMM", description: "Storm water management modeling" },
-      { name: "InfoSewer", description: "Sewer system analysis and design" },
-      { name: "XPSWMM", description: "Comprehensive urban drainage modeling" },
-      { name: "InfoWater Pro", description: "Water distribution system modeling" },
-      { name: "H2OMap Series", description: "Water and sewer modeling suite" }
+      { name: "H2OMap Sewer", description: "Legacy sewer system modeling" },
+      { name: "H2OMap SWMM", description: "Legacy storm water modeling" },
+      { name: "H2OMap Water", description: "Legacy water distribution modeling" },
+      { name: "H2OCalc", description: "Legacy hydraulic calculations" },
+      { name: "InfoWorks CS/RS", description: "Legacy collection and river systems" }
     ],
     icon: Cog,
     color: "from-primary/80 to-accent/80"
