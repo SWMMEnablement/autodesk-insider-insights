@@ -46,17 +46,27 @@ export const AuthorSection = () => {
                 </div>
               </div>
               
-              <div className="space-y-3">
-                <h4 className="font-semibold text-foreground">Key Tools</h4>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">AEC Collection</Badge>
-                  <Badge variant="outline">InfoDrainage</Badge>
-                  <Badge variant="outline">ICM Standard</Badge>
-                  <Badge variant="outline">Civil 3D</Badge>
-                  <Badge variant="outline">InfoSWMM</Badge>
-                  <Badge variant="outline">XPSWMM</Badge>
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-foreground">Key Subscription Benefits</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-foreground text-sm">Professional Experience</h4>
+                  <p className="text-xs text-muted-foreground">User perspective understanding from development background</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-foreground text-sm">Industry Support</h4>
+                  <p className="text-xs text-muted-foreground">Contributing to continuous software development</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-foreground text-sm">Latest Updates</h4>
+                  <p className="text-xs text-muted-foreground">Access to newest features and advancements</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-foreground text-sm">Dual Contribution</h4>
+                  <p className="text-xs text-muted-foreground">Forum engagement and User Voice platform participation</p>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </Card>
