@@ -12,7 +12,7 @@ export const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <Badge variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-                Engineering Insights
+                UF Gator Pride
               </Badge>
               
               <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
@@ -37,7 +37,7 @@ export const Hero = () => {
           </div>
           
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-2xl blur-3xl transform rotate-6" />
+          <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-2xl blur-3xl transform rotate-6" />
             <img 
               src={heroCover} 
               alt="ICM InfoWorks integrated catchment modeling interface" 
