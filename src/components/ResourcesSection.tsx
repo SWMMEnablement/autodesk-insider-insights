@@ -1,9 +1,17 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, MessageSquare, Users, Headphones, Award } from "lucide-react";
+import { ExternalLink, MessageSquare, Users, Headphones, Award, Rocket } from "lucide-react";
 
 const resources = [
+  {
+    title: "What's New in InfoWorks ICM",
+    description: "Interactive explorer for the latest features, improvements, and updates in InfoWorks ICM. Stay current with cutting-edge capabilities.",
+    url: "https://icm-new-view-robertdickinson.replit.app",
+    icon: Rocket,
+    category: "Product Updates",
+    highlight: "Latest Features"
+  },
   {
     title: "User Voice Platform",
     description: "Suggest enhancements and innovations for Autodesk Innovyze software. A pivotal channel where users can actively contribute to software development.",
