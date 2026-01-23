@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Droplets, Landmark, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
+import { useSummaryContext } from "./ExecutiveSummary";
 
 type PersonaKey = "land-dev" | "water-modeler" | "infrastructure";
 
@@ -79,11 +80,25 @@ const personas: Persona[] = [
 
 export const PersonaPathways = () => {
   const [selectedPersona, setSelectedPersona] = useState<PersonaKey | null>(null);
+  const summaryContext = useSummaryContext();
 
   const activePersona = personas.find(p => p.id === selectedPersona);
 
+  // Update summary context when persona changes
+  useEffect(() => {
+    if (activePersona && summaryContext) {
+      summaryContext.setPersonaData({
+        id: activePersona.id,
+        title: activePersona.title,
+        subtitle: activePersona.subtitle,
+        startingPoint: activePersona.startingPoint,
+        coreTools: activePersona.tools.filter(t => t.priority === "core").map(t => t.name),
+      });
+    }
+  }, [activePersona, summaryContext]);
+
   return (
-    <section className="py-20 bg-gradient-to-br from-secondary/30 to-background">
+    <section id="persona-pathways" className="py-20 bg-gradient-to-br from-secondary/30 to-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 border-accent/30 text-accent">

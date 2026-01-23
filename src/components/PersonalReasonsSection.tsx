@@ -63,7 +63,7 @@ export const PersonalReasonsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background to-secondary/10">
+    <section id="personal-reasons" className="py-20 bg-gradient-to-br from-background to-secondary/10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">

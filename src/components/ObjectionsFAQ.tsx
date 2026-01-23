@@ -102,7 +102,7 @@ Small doesn't mean underequipped. It means nimble.`
 
 export const ObjectionsFAQ = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-secondary/30 to-background">
+    <section id="objections-faq" className="py-20 bg-gradient-to-br from-secondary/30 to-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
