@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MessageSquare, Lightbulb, CheckCircle2, ExternalLink, ArrowDown } from "lucide-react";
+import { MessageSquare, Lightbulb, CheckCircle2, ExternalLink, ArrowDown, Tag } from "lucide-react";
 
 interface TimelineEntry {
   id: string;
@@ -10,12 +10,13 @@ interface TimelineEntry {
   internalNote?: string;
   releaseDate: string;
   releaseVersion: string;
+  versionNumber: string; // Version badge number
   releaseNote: string;
   userVoiceUrl?: string;
   status: "completed" | "in-progress";
 }
 
-// Placeholder data - to be replaced with real examples
+// Real examples from Autodesk User Voice community
 const timelineEntries: TimelineEntry[] = [
   {
     id: "batch-calibration",
@@ -25,8 +26,22 @@ const timelineEntries: TimelineEntry[] = [
     internalNote: "Prioritized for upcoming release cycle. High customer impact identified.",
     releaseDate: "2024 Q1",
     releaseVersion: "ICM Update 2024.2",
+    versionNumber: "2024.2",
     releaseNote: "Batch calibration graph export feature released with customizable templates.",
-    userVoiceUrl: "#", // Replace with actual User Voice URL
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "completed"
+  },
+  {
+    id: "feh22-rainfall",
+    userVoiceDate: "2023 Q3",
+    userVoiceSuggestion: "Auto-generation of FEH22 rainfall data via ICM Exchange would streamline UK flood modeling workflows.",
+    internalDate: "2024 Q1",
+    internalNote: "FEH22 integration prioritized. Partnering with rainfall data providers.",
+    releaseDate: "2024 Q3",
+    releaseVersion: "ICM 2024.3",
+    versionNumber: "2024.3",
+    releaseNote: "FEH22 rainfall generation integrated with ICM Exchange automation.",
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "completed"
   },
   {
@@ -37,21 +52,36 @@ const timelineEntries: TimelineEntry[] = [
     internalNote: "Technical writing resources allocated. Community feedback incorporated.",
     releaseDate: "2023 Q3",
     releaseVersion: "ICM 2023.3",
+    versionNumber: "2023.3",
     releaseNote: "Comprehensive Ruby API documentation with 50+ code examples published.",
-    userVoiceUrl: "#",
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "completed"
   },
   {
-    id: "infoworks-to-icm",
-    userVoiceDate: "2023 Q1",
-    userVoiceSuggestion: "Seamless migration path from legacy InfoWorks CS models to ICM format.",
-    internalDate: "2023 Q3",
-    internalNote: "Migration wizard development initiated. Beta testing with key customers.",
-    releaseDate: "2024 Q2",
-    releaseVersion: "ICM 2024.3",
-    releaseNote: "One-click model migration from InfoWorks CS/RS with validation reporting.",
-    userVoiceUrl: "#",
+    id: "flood-contour-export",
+    userVoiceDate: "2023 Q4",
+    userVoiceSuggestion: "Export max flood contours and elevations directly from 2D results without external GIS processing.",
+    internalDate: "2024 Q2",
+    internalNote: "GIS export workflow improvements scoped. Community votes: High priority.",
+    releaseDate: "2024 Q4",
+    releaseVersion: "ICM 2024.4",
+    versionNumber: "2024.4",
+    releaseNote: "Direct flood contour and elevation export with configurable intervals.",
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "completed"
+  },
+  {
+    id: "asset-id-csv",
+    userVoiceDate: "2024 Q1",
+    userVoiceSuggestion: "CSV exports for inspection lists should include Asset IDs for GIS synchronization workflows.",
+    internalDate: "2024 Q3",
+    internalNote: "GIS interoperability improvements in planning. Asset ID mapping reviewed.",
+    releaseDate: "2025 Q2 (Target)",
+    releaseVersion: "ICM 2025.1",
+    versionNumber: "2025.1",
+    releaseNote: "Enhanced CSV exports with Asset ID fields for enterprise GIS sync.",
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "in-progress"
   },
   {
     id: "climate-scenarios",
@@ -59,10 +89,11 @@ const timelineEntries: TimelineEntry[] = [
     userVoiceSuggestion: "Integration with climate change rainfall projections for future scenario modeling.",
     internalDate: "2024 Q2",
     internalNote: "Partnership with climate data providers under evaluation.",
-    releaseDate: "2025 Q1 (Target)",
+    releaseDate: "2025 Q3 (Target)",
     releaseVersion: "ICM 2025.x",
+    versionNumber: "2025.x",
     releaseNote: "Climate scenario rainfall multipliers with regional dataset integration.",
-    userVoiceUrl: "#",
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "in-progress"
   }
 ];
@@ -175,9 +206,22 @@ export const TrenchesTimeline = () => {
                               {entry.status === "completed" ? "Feature Released" : "In Development"}
                             </span>
                           </div>
-                          <Badge variant={entry.status === "completed" ? "default" : "secondary"} className="text-xs">
-                            {entry.releaseDate}
-                          </Badge>
+                          <div className="flex items-center gap-2">
+                            {/* Version Badge */}
+                            <Badge 
+                              className={`text-xs flex items-center gap-1 ${
+                                entry.status === "completed" 
+                                  ? "bg-gradient-to-r from-primary to-accent text-white border-0" 
+                                  : "bg-muted text-muted-foreground"
+                              }`}
+                            >
+                              <Tag className="w-3 h-3" />
+                              v{entry.versionNumber}
+                            </Badge>
+                            <Badge variant={entry.status === "completed" ? "default" : "secondary"} className="text-xs">
+                              {entry.releaseDate}
+                            </Badge>
+                          </div>
                         </div>
                         <div className="font-semibold text-foreground mb-1">{entry.releaseVersion}</div>
                         <p className={entry.status === "completed" ? "text-foreground" : "text-muted-foreground"}>

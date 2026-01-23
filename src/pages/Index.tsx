@@ -5,6 +5,7 @@ import { ROICalculator } from "@/components/ROICalculator";
 import { PersonaPathways } from "@/components/PersonaPathways";
 import { WorkflowComparison } from "@/components/WorkflowComparison";
 import { SoftwareSection } from "@/components/SoftwareSection";
+import { WhatsNewSection } from "@/components/WhatsNewSection";
 import { TrenchesTimeline } from "@/components/TrenchesTimeline";
 import { FutureVisionSection } from "@/components/FutureVisionSection";
 import { ObjectionsFAQ } from "@/components/ObjectionsFAQ";
@@ -25,6 +26,7 @@ const Index = () => {
         <PersonaPathways />
         <WorkflowComparison />
         <SoftwareSection />
+        <WhatsNewSection />
         <TrenchesTimeline />
         <FutureVisionSection />
         <ObjectionsFAQ />
