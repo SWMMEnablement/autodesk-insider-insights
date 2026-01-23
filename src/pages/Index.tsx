@@ -6,6 +6,7 @@ import { PersonaPathways } from "@/components/PersonaPathways";
 import { WorkflowComparison } from "@/components/WorkflowComparison";
 import { SoftwareSection } from "@/components/SoftwareSection";
 import { WhatsNewSection } from "@/components/WhatsNewSection";
+import { UserVoiceStats } from "@/components/UserVoiceStats";
 import { TrenchesTimeline } from "@/components/TrenchesTimeline";
 import { FutureVisionSection } from "@/components/FutureVisionSection";
 import { ObjectionsFAQ } from "@/components/ObjectionsFAQ";
@@ -27,6 +28,7 @@ const Index = () => {
         <WorkflowComparison />
         <SoftwareSection />
         <WhatsNewSection />
+        <UserVoiceStats />
         <TrenchesTimeline />
         <FutureVisionSection />
         <ObjectionsFAQ />
