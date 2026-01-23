@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Lightbulb, CheckCircle2, ExternalLink, ArrowDown, Tag, Filter } from "lucide-react";
+import { MessageSquare, Lightbulb, CheckCircle2, ExternalLink, ArrowDown, Tag, Filter, Waves, Droplets, Droplet } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -10,6 +10,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+type ProductType = "icm-flood" | "icm-sewer" | "icm-ultimate" | "infodrainage" | "infowater-pro";
 
 interface TimelineEntry {
   id: string;
@@ -20,11 +22,20 @@ interface TimelineEntry {
   releaseDate: string;
   releaseVersion: string;
   versionNumber: string;
-  versionMajor: string; // For filtering: "2023", "2024", "2025"
+  versionMajor: string;
+  product: ProductType;
   releaseNote: string;
   userVoiceUrl?: string;
   status: "completed" | "in-progress";
 }
+
+const productLabels: Record<ProductType, { label: string; shortLabel: string; icon: React.ElementType; color: string }> = {
+  "icm-flood": { label: "ICM InfoWorks Flood", shortLabel: "Flood", icon: Waves, color: "bg-blue-500" },
+  "icm-sewer": { label: "ICM InfoWorks Sewer", shortLabel: "Sewer", icon: Waves, color: "bg-amber-500" },
+  "icm-ultimate": { label: "ICM InfoWorks Ultimate", shortLabel: "Ultimate", icon: Waves, color: "bg-purple-500" },
+  "infodrainage": { label: "InfoDrainage", shortLabel: "InfoDrainage", icon: Droplets, color: "bg-emerald-500" },
+  "infowater-pro": { label: "InfoWater Pro", shortLabel: "InfoWater Pro", icon: Droplet, color: "bg-cyan-500" },
+};
 
 // Real examples from Autodesk User Voice community
 const timelineEntries: TimelineEntry[] = [
@@ -38,6 +49,7 @@ const timelineEntries: TimelineEntry[] = [
     releaseVersion: "ICM Update 2024.2",
     versionNumber: "2024.2",
     versionMajor: "2024",
+    product: "icm-ultimate",
     releaseNote: "Batch calibration graph export feature released with customizable templates.",
     userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "completed"
@@ -52,6 +64,7 @@ const timelineEntries: TimelineEntry[] = [
     releaseVersion: "ICM 2024.3",
     versionNumber: "2024.3",
     versionMajor: "2024",
+    product: "icm-flood",
     releaseNote: "FEH22 rainfall generation integrated with ICM Exchange automation.",
     userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "completed"
@@ -66,6 +79,7 @@ const timelineEntries: TimelineEntry[] = [
     releaseVersion: "ICM 2023.3",
     versionNumber: "2023.3",
     versionMajor: "2023",
+    product: "icm-sewer",
     releaseNote: "Comprehensive Ruby API documentation with 50+ code examples published.",
     userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "completed"
@@ -80,7 +94,38 @@ const timelineEntries: TimelineEntry[] = [
     releaseVersion: "ICM 2024.4",
     versionNumber: "2024.4",
     versionMajor: "2024",
+    product: "icm-flood",
     releaseNote: "Direct flood contour and elevation export with configurable intervals.",
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "completed"
+  },
+  {
+    id: "suds-component-library",
+    userVoiceDate: "2023 Q2",
+    userVoiceSuggestion: "Pre-built SuDS component library with UK and US standard configurations.",
+    internalDate: "2023 Q4",
+    internalNote: "SuDS library development with regional standards compliance.",
+    releaseDate: "2024 Q2",
+    releaseVersion: "InfoDrainage 2024.1",
+    versionNumber: "2024.1",
+    versionMajor: "2024",
+    product: "infodrainage",
+    releaseNote: "Comprehensive SuDS component library with CIRIA and EPA best practices.",
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "completed"
+  },
+  {
+    id: "water-quality-modeling",
+    userVoiceDate: "2023 Q4",
+    userVoiceSuggestion: "Enhanced water quality modeling with chlorine decay and DBP formation tracking.",
+    internalDate: "2024 Q2",
+    internalNote: "Water quality module enhancement prioritized for distribution networks.",
+    releaseDate: "2024 Q4",
+    releaseVersion: "InfoWater Pro 2024.2",
+    versionNumber: "2024.2",
+    versionMajor: "2024",
+    product: "infowater-pro",
+    releaseNote: "Advanced water quality modeling with multi-species reactions and DBP tracking.",
     userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "completed"
   },
@@ -94,6 +139,7 @@ const timelineEntries: TimelineEntry[] = [
     releaseVersion: "ICM 2025.1",
     versionNumber: "2025.1",
     versionMajor: "2025",
+    product: "icm-sewer",
     releaseNote: "Enhanced CSV exports with Asset ID fields for enterprise GIS sync.",
     userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "in-progress"
@@ -108,7 +154,23 @@ const timelineEntries: TimelineEntry[] = [
     releaseVersion: "ICM 2025.x",
     versionNumber: "2025.x",
     versionMajor: "2025",
+    product: "icm-ultimate",
     releaseNote: "Climate scenario rainfall multipliers with regional dataset integration.",
+    userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "in-progress"
+  },
+  {
+    id: "pressure-zone-optimization",
+    userVoiceDate: "2024 Q2",
+    userVoiceSuggestion: "Automated pressure zone optimization with energy cost calculations.",
+    internalDate: "2024 Q4",
+    internalNote: "Optimization algorithms under development with energy efficiency focus.",
+    releaseDate: "2025 Q2 (Target)",
+    releaseVersion: "InfoWater Pro 2025.1",
+    versionNumber: "2025.1",
+    versionMajor: "2025",
+    product: "infowater-pro",
+    releaseNote: "AI-assisted pressure zone optimization with energy cost projections.",
     userVoiceUrl: "https://innovyzefeedback.autodesk.com/ideas",
     status: "in-progress"
   }
@@ -116,17 +178,29 @@ const timelineEntries: TimelineEntry[] = [
 
 const versionFilters = [
   { value: "all", label: "All Versions" },
-  { value: "2025", label: "ICM 2025.x" },
-  { value: "2024", label: "ICM 2024.x" },
-  { value: "2023", label: "ICM 2023.x" },
+  { value: "2025", label: "2025.x" },
+  { value: "2024", label: "2024.x" },
+  { value: "2023", label: "2023.x" },
+];
+
+const productFilters = [
+  { value: "all", label: "All Products" },
+  { value: "icm-flood", label: "ICM Flood" },
+  { value: "icm-sewer", label: "ICM Sewer" },
+  { value: "icm-ultimate", label: "ICM Ultimate" },
+  { value: "infodrainage", label: "InfoDrainage" },
+  { value: "infowater-pro", label: "InfoWater Pro" },
 ];
 
 export const TrenchesTimeline = () => {
   const [versionFilter, setVersionFilter] = useState("all");
+  const [productFilter, setProductFilter] = useState("all");
 
-  const filteredEntries = versionFilter === "all" 
-    ? timelineEntries 
-    : timelineEntries.filter(entry => entry.versionMajor === versionFilter);
+  const filteredEntries = timelineEntries.filter(entry => {
+    const versionMatch = versionFilter === "all" || entry.versionMajor === versionFilter;
+    const productMatch = productFilter === "all" || entry.product === productFilter;
+    return versionMatch && productMatch;
+  });
 
   const completedCount = filteredEntries.filter(e => e.status === "completed").length;
   const inProgressCount = filteredEntries.filter(e => e.status === "in-progress").length;
@@ -148,15 +222,31 @@ export const TrenchesTimeline = () => {
           </p>
         </div>
 
-        {/* Version Filter */}
+        {/* Filters */}
         <div className="max-w-4xl mx-auto mb-8">
           <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-lg bg-card/60 backdrop-blur-sm border border-primary/10">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <Filter className="w-5 h-5 text-primary" />
-              <span className="font-medium text-foreground">Filter by Version:</span>
+              <span className="font-medium text-foreground">Filter:</span>
+              
+              {/* Product Filter */}
+              <Select value={productFilter} onValueChange={setProductFilter}>
+                <SelectTrigger className="w-[160px]">
+                  <SelectValue placeholder="Product" />
+                </SelectTrigger>
+                <SelectContent>
+                  {productFilters.map((filter) => (
+                    <SelectItem key={filter.value} value={filter.value}>
+                      {filter.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              
+              {/* Version Filter */}
               <Select value={versionFilter} onValueChange={setVersionFilter}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select version" />
+                <SelectTrigger className="w-[140px]">
+                  <SelectValue placeholder="Version" />
                 </SelectTrigger>
                 <SelectContent>
                   {versionFilters.map((filter) => (
@@ -185,132 +275,145 @@ export const TrenchesTimeline = () => {
         <div className="max-w-4xl mx-auto">
           {filteredEntries.length === 0 ? (
             <Card className="p-8 text-center bg-card/60 backdrop-blur-sm">
-              <p className="text-muted-foreground">No entries found for the selected version filter.</p>
+              <p className="text-muted-foreground">No entries found for the selected filters.</p>
               <Button 
                 variant="outline" 
                 className="mt-4"
-                onClick={() => setVersionFilter("all")}
+                onClick={() => { setVersionFilter("all"); setProductFilter("all"); }}
               >
-                Show All Versions
+                Clear Filters
               </Button>
             </Card>
           ) : (
-            filteredEntries.map((entry, index) => (
-              <div key={entry.id} className="relative animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-                {/* Connector Line */}
-                {index < filteredEntries.length - 1 && (
-                  <div className="absolute left-6 top-[4.5rem] bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/30" />
-                )}
-                
-                <Card className="mb-8 bg-card/80 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
-                  <CardContent className="p-6">
-                    <div className="flex gap-6">
-                      {/* Timeline Node */}
-                      <div className="flex-shrink-0">
-                        <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                          entry.status === "completed" 
-                            ? "bg-gradient-to-br from-primary to-accent" 
-                            : "bg-gradient-to-br from-accent/50 to-primary/50"
-                        }`}>
-                          {entry.status === "completed" ? (
-                            <CheckCircle2 className="w-6 h-6 text-white" />
-                          ) : (
-                            <Lightbulb className="w-6 h-6 text-white" />
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 space-y-4">
-                        {/* User Voice Suggestion */}
-                        <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <MessageSquare className="w-4 h-4 text-primary" />
-                              <span className="text-sm font-semibold text-primary">User Voice Suggestion</span>
-                            </div>
-                            <Badge variant="secondary" className="text-xs">{entry.userVoiceDate}</Badge>
+            filteredEntries.map((entry, index) => {
+              const productInfo = productLabels[entry.product];
+              const ProductIcon = productInfo.icon;
+              
+              return (
+                <div key={entry.id} className="relative animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                  {/* Connector Line */}
+                  {index < filteredEntries.length - 1 && (
+                    <div className="absolute left-6 top-[4.5rem] bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/30" />
+                  )}
+                  
+                  <Card className="mb-8 bg-card/80 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
+                    <CardContent className="p-6">
+                      <div className="flex gap-6">
+                        {/* Timeline Node */}
+                        <div className="flex-shrink-0">
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                            entry.status === "completed" 
+                              ? "bg-gradient-to-br from-primary to-accent" 
+                              : "bg-gradient-to-br from-accent/50 to-primary/50"
+                          }`}>
+                            {entry.status === "completed" ? (
+                              <CheckCircle2 className="w-6 h-6 text-white" />
+                            ) : (
+                              <Lightbulb className="w-6 h-6 text-white" />
+                            )}
                           </div>
-                          <p className="text-foreground italic">"{entry.userVoiceSuggestion}"</p>
-                          {entry.userVoiceUrl && entry.userVoiceUrl !== "#" && (
-                            <a 
-                              href={entry.userVoiceUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-sm text-primary hover:underline mt-2"
-                            >
-                              View original suggestion <ExternalLink className="w-3 h-3" />
-                            </a>
-                          )}
                         </div>
 
-                        {/* Arrow */}
-                        <div className="flex justify-center">
-                          <ArrowDown className="w-5 h-5 text-muted-foreground" />
-                        </div>
+                        {/* Content */}
+                        <div className="flex-1 space-y-4">
+                          {/* Product Badge */}
+                          <div className="flex items-center gap-2">
+                            <Badge className={`${productInfo.color} text-white border-0 flex items-center gap-1`}>
+                              <ProductIcon className="w-3 h-3" />
+                              {productInfo.shortLabel}
+                            </Badge>
+                          </div>
 
-                        {/* Internal Planning */}
-                        {entry.internalDate && (
-                          <>
-                            <div className="p-4 rounded-lg bg-secondary/50 border border-muted/30">
-                              <div className="flex items-center justify-between mb-2">
-                                <div className="flex items-center gap-2">
-                                  <Lightbulb className="w-4 h-4 text-accent" />
-                                  <span className="text-sm font-semibold text-accent">Internal Planning</span>
-                                </div>
-                                <Badge variant="secondary" className="text-xs">{entry.internalDate}</Badge>
+                          {/* User Voice Suggestion */}
+                          <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center gap-2">
+                                <MessageSquare className="w-4 h-4 text-primary" />
+                                <span className="text-sm font-semibold text-primary">User Voice Suggestion</span>
                               </div>
-                              <p className="text-muted-foreground">{entry.internalNote}</p>
+                              <Badge variant="secondary" className="text-xs">{entry.userVoiceDate}</Badge>
                             </div>
-
-                            {/* Arrow */}
-                            <div className="flex justify-center">
-                              <ArrowDown className="w-5 h-5 text-muted-foreground" />
-                            </div>
-                          </>
-                        )}
-
-                        {/* Feature Released */}
-                        <div className={`p-4 rounded-lg border ${
-                          entry.status === "completed"
-                            ? "bg-gradient-to-br from-accent/10 to-accent/5 border-accent/30"
-                            : "bg-gradient-to-br from-muted/30 to-muted/10 border-muted/30"
-                        }`}>
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <CheckCircle2 className={`w-4 h-4 ${entry.status === "completed" ? "text-accent" : "text-muted-foreground"}`} />
-                              <span className={`text-sm font-semibold ${entry.status === "completed" ? "text-accent" : "text-muted-foreground"}`}>
-                                {entry.status === "completed" ? "Feature Released" : "In Development"}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              {/* Version Badge */}
-                              <Badge 
-                                className={`text-xs flex items-center gap-1 ${
-                                  entry.status === "completed" 
-                                    ? "bg-gradient-to-r from-primary to-accent text-white border-0" 
-                                    : "bg-muted text-muted-foreground"
-                                }`}
+                            <p className="text-foreground italic">"{entry.userVoiceSuggestion}"</p>
+                            {entry.userVoiceUrl && entry.userVoiceUrl !== "#" && (
+                              <a 
+                                href={entry.userVoiceUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-sm text-primary hover:underline mt-2"
                               >
-                                <Tag className="w-3 h-3" />
-                                v{entry.versionNumber}
-                              </Badge>
-                              <Badge variant={entry.status === "completed" ? "default" : "secondary"} className="text-xs">
-                                {entry.releaseDate}
-                              </Badge>
-                            </div>
+                                View original suggestion <ExternalLink className="w-3 h-3" />
+                              </a>
+                            )}
                           </div>
-                          <div className="font-semibold text-foreground mb-1">{entry.releaseVersion}</div>
-                          <p className={entry.status === "completed" ? "text-foreground" : "text-muted-foreground"}>
-                            {entry.releaseNote}
-                          </p>
+
+                          {/* Arrow */}
+                          <div className="flex justify-center">
+                            <ArrowDown className="w-5 h-5 text-muted-foreground" />
+                          </div>
+
+                          {/* Internal Planning */}
+                          {entry.internalDate && (
+                            <>
+                              <div className="p-4 rounded-lg bg-secondary/50 border border-muted/30">
+                                <div className="flex items-center justify-between mb-2">
+                                  <div className="flex items-center gap-2">
+                                    <Lightbulb className="w-4 h-4 text-accent" />
+                                    <span className="text-sm font-semibold text-accent">Internal Planning</span>
+                                  </div>
+                                  <Badge variant="secondary" className="text-xs">{entry.internalDate}</Badge>
+                                </div>
+                                <p className="text-muted-foreground">{entry.internalNote}</p>
+                              </div>
+
+                              {/* Arrow */}
+                              <div className="flex justify-center">
+                                <ArrowDown className="w-5 h-5 text-muted-foreground" />
+                              </div>
+                            </>
+                          )}
+
+                          {/* Feature Released */}
+                          <div className={`p-4 rounded-lg border ${
+                            entry.status === "completed"
+                              ? "bg-gradient-to-br from-accent/10 to-accent/5 border-accent/30"
+                              : "bg-gradient-to-br from-muted/30 to-muted/10 border-muted/30"
+                          }`}>
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center gap-2">
+                                <CheckCircle2 className={`w-4 h-4 ${entry.status === "completed" ? "text-accent" : "text-muted-foreground"}`} />
+                                <span className={`text-sm font-semibold ${entry.status === "completed" ? "text-accent" : "text-muted-foreground"}`}>
+                                  {entry.status === "completed" ? "Feature Released" : "In Development"}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                {/* Version Badge */}
+                                <Badge 
+                                  className={`text-xs flex items-center gap-1 ${
+                                    entry.status === "completed" 
+                                      ? "bg-gradient-to-r from-primary to-accent text-white border-0" 
+                                      : "bg-muted text-muted-foreground"
+                                  }`}
+                                >
+                                  <Tag className="w-3 h-3" />
+                                  v{entry.versionNumber}
+                                </Badge>
+                                <Badge variant={entry.status === "completed" ? "default" : "secondary"} className="text-xs">
+                                  {entry.releaseDate}
+                                </Badge>
+                              </div>
+                            </div>
+                            <div className="font-semibold text-foreground mb-1">{entry.releaseVersion}</div>
+                            <p className={entry.status === "completed" ? "text-foreground" : "text-muted-foreground"}>
+                              {entry.releaseNote}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            })
           )}
         </div>
 
