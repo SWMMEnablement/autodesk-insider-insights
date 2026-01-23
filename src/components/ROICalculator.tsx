@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,12 +6,15 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calculator, Download, TrendingUp, DollarSign, Clock, Users } from "lucide-react";
+import { useSummaryContext } from "./ExecutiveSummary";
 
 export const ROICalculator = () => {
   const [engineers, setEngineers] = useState(5);
   const [hourlyRate, setHourlyRate] = useState(85);
   const [timeSavings, setTimeSavings] = useState(15);
   const [showResults, setShowResults] = useState(false);
+
+  const summaryContext = useSummaryContext();
 
   // Calculations
   const annualHoursPerEngineer = 2080; // 52 weeks × 40 hours
@@ -24,6 +27,19 @@ export const ROICalculator = () => {
 
   const handleCalculate = () => {
     setShowResults(true);
+    // Update summary context
+    if (summaryContext) {
+      summaryContext.setROIData({
+        engineers,
+        hourlyRate,
+        timeSavings,
+        totalHoursSaved,
+        annualValueSaved,
+        estimatedCost: estimatedSubscriptionCost,
+        netROI,
+        roiPercentage,
+      });
+    }
   };
 
   const handleDownloadTemplate = () => {
@@ -119,7 +135,7 @@ Visit: https://autodesk-insider-insights.lovable.app
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
+    <section id="roi-calculator" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
