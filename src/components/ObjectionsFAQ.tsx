@@ -6,97 +6,94 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { HelpCircle, DollarSign, Key, Scale, ArrowRight } from "lucide-react";
+import { HelpCircle, DollarSign, Key, ArrowRight } from "lucide-react";
 
 const faqs = [
   {
+    id: "why-pay",
+    icon: DollarSign,
+    question: "Why pay for software you get through work?",
+    answer: `This isn't about access—it's about principle.
+
+**As an employee,** I use our latest tools through my work account. That's a job benefit.
+
+**As a subscriber,** I participate in the ecosystem as a user. I experience billing, renewals, licensing quirks—the same friction our customers feel.
+
+**The dual role advantage:** When I give feedback, I'm not just speaking as a developer. I'm a customer who has skin in the game. The annual fee is my personal stake in the software's success.
+
+**It's also insurance:** If I ever leave Autodesk, my personal projects, my consulting work, my ability to stay current—none of that depends on my employment status.`
+  },
+  {
     id: "investment",
     icon: DollarSign,
-    question: "This is a significant investment. How do I know it's not overkill for my needs?",
-    answer: `Start with what you need. Most firms begin with the AEC Collection and add water modules as project demands grow.
+    question: "Isn't this a significant expense for personal use?",
+    answer: `Let's be honest about the numbers.
 
-**The integration advantage:** You're not buying redundant capabilities. Civil 3D surfaces flow directly into InfoDrainage. InfraWorks concepts transfer cleanly to detailed design. Each tool amplifies the others.
+**The cost is real:** AEC Collection plus water tools is a meaningful annual expense. I'm not pretending otherwise.
 
-**Use our Persona Pathways** (above) to identify your core toolkit. A land development firm doesn't need ICM Ultimate on day one—that's for complex flood analysis you may subcontract to specialists.
+**What I'm buying:**
+- Independence from employer-provided access
+- A voice in User Voice as a paying customer
+- Access to every update, beta, and new feature
+- The right to say "I use this software by choice"
 
-**The real question:** What is the cost of *not* having integrated tools? Calculate the hours lost to manual data transfer, format conversion errors, and rework. That's your comparison point.`
+**The real question:** What is 50 years of career investment worth? For me, maintaining connection to these tools—on my own terms—is worth the subscription.
+
+I'm not advising you to do the same. This is my choice.`
   },
   {
     id: "perpetual",
     icon: Key,
-    question: "Why should I subscribe when I own legacy perpetual licenses?",
-    answer: `Perpetual licenses lock you in time. Here's the hard truth:
+    question: "Do you regret not keeping perpetual licenses?",
+    answer: `I had perpetual licenses before 2021. Here's why I switched:
 
-**Security Risk:** Outdated software doesn't receive critical security patches. One compromised project file can cost far more than years of subscription fees.
+**The honest truth:**
+- Perpetual licenses freeze you in time
+- I was missing features that made my work easier
+- Format compatibility was becoming a headache
+- Security patches matter when you're handling client data
 
-**Efficiency Drain:** You're missing performance enhancements that compound annually. A 5% speed improvement this year, 8% next year—perpetual license holders fall further behind.
+**What I lost:** The psychological comfort of "owning" something.
 
-**Format Isolation:** Modern project delivery increasingly requires current file formats, cloud collaboration, and BIM Level 2+ compliance. Legacy tools create friction with clients and partners.
+**What I gained:** A living toolset that evolves with the industry.
 
-**The real calculation:** What is the cost of one corrupted project file due to an outdated format? One missed deadline because your solver runs 3x slower than current versions? One RFP you couldn't bid on because you lacked required cloud collaboration features?
-
-Perpetual ownership is an illusion of cost savings that compounds into competitive disadvantage.`
-  },
-  {
-    id: "competition",
-    icon: Scale,
-    question: "How does this compare to other options in the market?",
-    answer: `We don't name competitors—you know who they are. Here's what to evaluate:
-
-**Our unique advantage** is the seamless workflow from:
-- **Conceptual design** (InfraWorks, Forma) →
-- **Detailed engineering** (Civil 3D, AutoCAD) →
-- **Performance simulation** (ICM, InfoDrainage, InfoSWMM) →
-- **Managed collaboration** (Autodesk Docs)
-
-**The critical question:** Does your current toolset require manual, error-prone data transfer between these stages? Every handoff is a source of errors, delays, and liability.
-
-**50+ years of modeling heritage:** The Innovyze acquisition brought decades of water modeling expertise. This isn't a bolt-on—it's deep integration built by engineers who've spent careers solving these problems.
-
-**Evaluate the workflow, not the feature list.** The real cost isn't the subscription—it's the friction between tools that don't talk to each other.`
-  },
-  {
-    id: "learning",
-    icon: ArrowRight,
-    question: "My team knows our current tools. Is the transition worth the disruption?",
-    answer: `Transition has a cost. So does stagnation.
-
-**The learning curve reality:**
-- Civil engineers find Civil 3D intuitive if they have AutoCAD background
-- Water modelers transitioning from legacy tools report 2-4 weeks to productive proficiency
-- The AEC Collection's shared interface patterns mean learning one tool accelerates the next
-
-**What you gain:**
-- Staff become more marketable and engaged (retention benefit)
-- New hires increasingly expect industry-standard tools (recruitment benefit)
-- Training investment compounds as skills transfer across the integrated suite
-
-**Mitigation strategy:**
-1. Start with one project team, one tool
-2. Run parallel workflows for a project cycle
-3. Build internal champions before broader rollout
-
-The question isn't whether to transition—it's whether to do it on your timeline or your competitors'.`
+**My perspective at 65:** Time is more valuable than perpetual licenses. Spending hours on workarounds because my software is 3 versions behind? That's a bad trade.`
   },
   {
     id: "small-firm",
     icon: HelpCircle,
-    question: "We're a small firm. Isn't this really for large organizations?",
-    answer: `The opposite may be true.
+    question: "Would you recommend this for others?",
+    answer: `I'm specifically NOT giving advice here.
 
-**Large firms** have IT departments, custom integrations, and momentum that resists change. They often underutilize what they have.
+**What I can share:**
+- My reasons are personal—50 years invested in this ecosystem
+- Your situation is different
+- Employee benefits, perpetual licenses, competitor tools—all valid choices
 
-**Small firms** gain disproportionate advantage from:
-- **Punching above your weight:** The same tools Fortune 500 firms use, at your scale
-- **Agility:** You can adopt new workflows without enterprise bureaucracy
-- **Multiplier effect:** When one engineer uses 3 integrated tools vs. 3 disconnected tools, the efficiency gain is dramatic
+**What I believe:**
+- If you're considering Autodesk tools, the integration story is real
+- If you're a small firm, start lean and grow
+- If you have perpetual licenses that work for you, don't let anyone pressure you
 
-**Right-sizing your subscription:**
-- Named user licenses flex with project load
-- Start lean with AEC Collection essentials
-- Add specialized water tools as projects demand
+**This site isn't a recommendation.** It's a documentation of one person's choice. Take what's useful, ignore what isn't.`
+  },
+  {
+    id: "legacy",
+    icon: ArrowRight,
+    question: "What happens to this commitment if circumstances change?",
+    answer: `Fair question. Life doesn't always cooperate with 15-year plans.
 
-Small doesn't mean underequipped. It means nimble.`
+**My intent:**
+- Continue as long as I'm professionally active
+- Document each year's renewal as part of this chronicle
+- Adjust if health, finances, or family require it
+
+**What I won't do:**
+- Pretend I'm locked in regardless of circumstances
+- Hide it if I ever need to pause or stop
+- Make this about proving something to others
+
+**The goal:** Reach 80 with 15 consecutive years. But if I get to 12 and life intervenes? I'll document that too. This is a personal journal, not a contract.`
   }
 ];
 
@@ -107,14 +104,13 @@ export const ObjectionsFAQ = () => {
         <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
             <HelpCircle className="w-4 h-4 mr-2" />
-            Facing the Objections
+            Honest Questions
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            The Questions You're Thinking
+            The Questions You Might Have
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A German mother addresses objections head-on. Let's not dance around 
-            the elephant in the room.
+            Frank answers about my choice to pay for software I could get through work.
           </p>
         </div>
 
