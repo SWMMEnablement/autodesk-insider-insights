@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MessageSquare, Droplets, Waves, CheckCircle2, ExternalLink, TrendingUp, Droplet } from "lucide-react";
+import { MessageSquare, Droplets, Waves, CheckCircle2, ExternalLink, TrendingUp, Droplet, ThumbsUp, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 interface StatItem {
   label: string;
@@ -11,6 +11,15 @@ interface StatItem {
   icon: React.ElementType;
   color: string;
   description: string;
+}
+
+interface MostVotedIdea {
+  id: string;
+  title: string;
+  votes: number;
+  product: 'icm' | 'infoDrainage' | 'infoWaterPro';
+  link: string;
+  status: 'pending' | 'under-review' | 'planned';
 }
 
 const stats: StatItem[] = [
@@ -48,6 +57,49 @@ const stats: StatItem[] = [
     icon: CheckCircle2,
     color: "from-emerald-500 to-emerald-600",
     description: "Features delivered from User Voice"
+  }
+];
+
+const mostVotedIdeas: MostVotedIdea[] = [
+  {
+    id: "1",
+    title: "Enhanced Python/Ruby API for automated model building workflows",
+    votes: 342,
+    product: "icm",
+    link: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "under-review"
+  },
+  {
+    id: "2",
+    title: "Real-time collaboration with multiple users on same model",
+    votes: 287,
+    product: "icm",
+    link: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "planned"
+  },
+  {
+    id: "3",
+    title: "Integrated climate change scenario analysis tools",
+    votes: 256,
+    product: "infoDrainage",
+    link: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "pending"
+  },
+  {
+    id: "4",
+    title: "Advanced pressure zone optimization with AI recommendations",
+    votes: 198,
+    product: "infoWaterPro",
+    link: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "under-review"
+  },
+  {
+    id: "5",
+    title: "Native BIM/IFC export with full attribute mapping",
+    votes: 175,
+    product: "icm",
+    link: "https://innovyzefeedback.autodesk.com/ideas",
+    status: "pending"
   }
 ];
 
@@ -203,6 +255,62 @@ const productConfigs: ProductConfig[] = [
   },
 ];
 
+const productBadgeStyles: Record<MostVotedIdea['product'], { icon: React.ElementType; class: string; label: string }> = {
+  icm: { icon: Waves, class: 'bg-accent/20 text-accent border-accent/30', label: 'ICM InfoWorks' },
+  infoDrainage: { icon: Droplets, class: 'bg-secondary/50 text-foreground border-secondary/30', label: 'InfoDrainage' },
+  infoWaterPro: { icon: Droplet, class: 'bg-blue-500/20 text-blue-600 border-blue-500/30', label: 'InfoWater Pro' },
+};
+
+const statusStyles: Record<MostVotedIdea['status'], { class: string; label: string }> = {
+  'pending': { class: 'bg-muted text-muted-foreground', label: 'Pending' },
+  'under-review': { class: 'bg-amber-500/20 text-amber-600 border-amber-500/30', label: 'Under Review' },
+  'planned': { class: 'bg-emerald-500/20 text-emerald-600 border-emerald-500/30', label: 'Planned' },
+};
+
+const MostVotedCard = ({ idea, index }: { idea: MostVotedIdea; index: number }) => {
+  const productStyle = productBadgeStyles[idea.product];
+  const statusStyle = statusStyles[idea.status];
+  const ProductIcon = productStyle.icon;
+
+  return (
+    <Card 
+      className="p-4 bg-card/60 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 group animate-fade-in"
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <div className="flex items-start gap-4">
+        <div className="flex flex-col items-center gap-1 min-w-[60px]">
+          <div className="flex items-center gap-1 text-accent">
+            <ThumbsUp className="w-4 h-4" />
+            <span className="font-bold text-lg">{idea.votes}</span>
+          </div>
+          <span className="text-xs text-muted-foreground">votes</span>
+        </div>
+        
+        <div className="flex-1 min-w-0">
+          <a 
+            href={idea.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-foreground hover:text-primary transition-colors line-clamp-2 group-hover:underline flex items-start gap-1"
+          >
+            {idea.title}
+            <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+          </a>
+          <div className="flex flex-wrap gap-2 mt-2">
+            <Badge variant="outline" className={`text-xs ${productStyle.class}`}>
+              <ProductIcon className="w-3 h-3 mr-1" />
+              {productStyle.label}
+            </Badge>
+            <Badge variant="outline" className={`text-xs ${statusStyle.class}`}>
+              {statusStyle.label}
+            </Badge>
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+};
+
 export const UserVoiceStats = () => {
   const [visibleProducts, setVisibleProducts] = useState<Record<ProductKey, boolean>>({
     implemented: true,
@@ -214,6 +322,16 @@ export const UserVoiceStats = () => {
   const toggleProduct = (key: ProductKey) => {
     setVisibleProducts(prev => ({ ...prev, [key]: !prev[key] }));
   };
+
+  // Calculate animationBegin based on visibility for smooth transitions
+  const getAnimationProps = (isVisible: boolean) => ({
+    animationDuration: 500,
+    animationEasing: "ease-in-out" as const,
+    style: {
+      opacity: isVisible ? 1 : 0,
+      transition: 'opacity 0.3s ease-in-out',
+    }
+  });
 
   return (
     <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-accent/5">
@@ -240,7 +358,7 @@ export const UserVoiceStats = () => {
         </div>
 
         {/* Trends Chart */}
-        <Card className="p-6 bg-card/60 backdrop-blur-sm border-primary/10">
+        <Card className="p-6 bg-card/60 backdrop-blur-sm border-primary/10 mb-12">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
             <div>
               <h3 className="text-xl font-bold text-foreground">User Voice Trends</h3>
@@ -253,12 +371,12 @@ export const UserVoiceStats = () => {
                 return (
                   <Badge 
                     key={product.key}
-                    className={`cursor-pointer transition-all duration-200 ${product.badgeClass} ${
-                      !isActive ? 'opacity-40 line-through' : ''
+                    className={`cursor-pointer transition-all duration-300 transform ${product.badgeClass} ${
+                      !isActive ? 'opacity-40 line-through scale-95' : 'scale-100'
                     }`}
                     onClick={() => toggleProduct(product.key)}
                   >
-                    <Icon className="w-3 h-3 mr-1" />
+                    <Icon className={`w-3 h-3 mr-1 transition-transform duration-300 ${isActive ? 'rotate-0' : 'rotate-12'}`} />
                     {product.label}
                   </Badge>
                 );
@@ -301,48 +419,72 @@ export const UserVoiceStats = () => {
                   axisLine={false}
                 />
                 <Tooltip content={<CustomTooltip />} />
-                {visibleProducts.implemented && (
-                  <Area 
-                    type="monotone" 
-                    dataKey="implemented" 
-                    stroke="#10b981" 
-                    strokeWidth={2}
-                    fillOpacity={1} 
-                    fill="url(#colorImplemented)" 
-                  />
-                )}
-                {visibleProducts.icm && (
-                  <Area 
-                    type="monotone" 
-                    dataKey="icm" 
-                    stroke="hsl(var(--primary))" 
-                    strokeWidth={2}
-                    fillOpacity={1} 
-                    fill="url(#colorIcm)" 
-                  />
-                )}
-                {visibleProducts.infoDrainage && (
-                  <Area 
-                    type="monotone" 
-                    dataKey="infoDrainage" 
-                    stroke="hsl(var(--secondary))" 
-                    strokeWidth={2}
-                    fillOpacity={1} 
-                    fill="url(#colorInfoDrainage)" 
-                  />
-                )}
-                {visibleProducts.infoWaterPro && (
-                  <Area 
-                    type="monotone" 
-                    dataKey="infoWaterPro" 
-                    stroke="#3b82f6" 
-                    strokeWidth={2}
-                    fillOpacity={1} 
-                    fill="url(#colorInfoWater)" 
-                  />
-                )}
+                <Area 
+                  type="monotone" 
+                  dataKey="implemented" 
+                  stroke="#10b981" 
+                  strokeWidth={visibleProducts.implemented ? 2 : 0}
+                  fillOpacity={visibleProducts.implemented ? 1 : 0} 
+                  fill="url(#colorImplemented)"
+                  {...getAnimationProps(visibleProducts.implemented)}
+                />
+                <Area 
+                  type="monotone" 
+                  dataKey="icm" 
+                  stroke="hsl(var(--primary))" 
+                  strokeWidth={visibleProducts.icm ? 2 : 0}
+                  fillOpacity={visibleProducts.icm ? 1 : 0} 
+                  fill="url(#colorIcm)"
+                  {...getAnimationProps(visibleProducts.icm)}
+                />
+                <Area 
+                  type="monotone" 
+                  dataKey="infoDrainage" 
+                  stroke="hsl(var(--secondary))" 
+                  strokeWidth={visibleProducts.infoDrainage ? 2 : 0}
+                  fillOpacity={visibleProducts.infoDrainage ? 1 : 0} 
+                  fill="url(#colorInfoDrainage)"
+                  {...getAnimationProps(visibleProducts.infoDrainage)}
+                />
+                <Area 
+                  type="monotone" 
+                  dataKey="infoWaterPro" 
+                  stroke="#3b82f6" 
+                  strokeWidth={visibleProducts.infoWaterPro ? 2 : 0}
+                  fillOpacity={visibleProducts.infoWaterPro ? 1 : 0} 
+                  fill="url(#colorInfoWater)"
+                  {...getAnimationProps(visibleProducts.infoWaterPro)}
+                />
               </AreaChart>
             </ResponsiveContainer>
+          </div>
+        </Card>
+
+        {/* Most Voted Ideas Section */}
+        <Card className="p-6 bg-card/60 backdrop-blur-sm border-primary/10">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                <ThumbsUp className="w-5 h-5 text-accent" />
+                Most Voted Ideas
+              </h3>
+              <p className="text-sm text-muted-foreground">Top pending requests from the community</p>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="group"
+              onClick={() => window.open("https://innovyzefeedback.autodesk.com/ideas", "_blank")}
+            >
+              View All
+              <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Button>
+          </div>
+          
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            {mostVotedIdeas.map((idea, index) => (
+              <MostVotedCard key={idea.id} idea={idea} index={index} />
+            ))}
           </div>
         </Card>
 
