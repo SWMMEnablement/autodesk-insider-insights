@@ -162,7 +162,59 @@ const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?:
   return null;
 };
 
+type ProductKey = 'implemented' | 'icm' | 'infoDrainage' | 'infoWaterPro';
+
+interface ProductConfig {
+  key: ProductKey;
+  label: string;
+  icon: React.ElementType;
+  color: string;
+  badgeClass: string;
+}
+
+const productConfigs: ProductConfig[] = [
+  { 
+    key: 'implemented', 
+    label: 'Implemented', 
+    icon: CheckCircle2, 
+    color: '#10b981',
+    badgeClass: 'bg-emerald-500/20 text-emerald-600 border-emerald-500/30 hover:bg-emerald-500/40'
+  },
+  { 
+    key: 'icm', 
+    label: 'ICM InfoWorks', 
+    icon: Waves, 
+    color: 'hsl(var(--primary))',
+    badgeClass: 'bg-accent/20 text-accent border-accent/30 hover:bg-accent/40'
+  },
+  { 
+    key: 'infoDrainage', 
+    label: 'InfoDrainage', 
+    icon: Droplets, 
+    color: 'hsl(var(--secondary))',
+    badgeClass: 'bg-secondary/50 text-foreground border-secondary/30 hover:bg-secondary/70'
+  },
+  { 
+    key: 'infoWaterPro', 
+    label: 'InfoWater Pro', 
+    icon: Droplet, 
+    color: '#3b82f6',
+    badgeClass: 'bg-blue-500/20 text-blue-600 border-blue-500/30 hover:bg-blue-500/40'
+  },
+];
+
 export const UserVoiceStats = () => {
+  const [visibleProducts, setVisibleProducts] = useState<Record<ProductKey, boolean>>({
+    implemented: true,
+    icm: true,
+    infoDrainage: true,
+    infoWaterPro: true,
+  });
+
+  const toggleProduct = (key: ProductKey) => {
+    setVisibleProducts(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
   return (
     <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="container mx-auto px-4">
@@ -192,25 +244,25 @@ export const UserVoiceStats = () => {
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
             <div>
               <h3 className="text-xl font-bold text-foreground">User Voice Trends</h3>
-              <p className="text-sm text-muted-foreground">Implemented vs Pending features over time</p>
+              <p className="text-sm text-muted-foreground">Click badges to toggle visibility</p>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Badge className="bg-emerald-500/20 text-emerald-600 border-emerald-500/30">
-                <CheckCircle2 className="w-3 h-3 mr-1" />
-                Implemented
-              </Badge>
-              <Badge className="bg-accent/20 text-accent border-accent/30">
-                <Waves className="w-3 h-3 mr-1" />
-                ICM InfoWorks
-              </Badge>
-              <Badge className="bg-secondary/50 text-foreground border-secondary/30">
-                <Droplets className="w-3 h-3 mr-1" />
-                InfoDrainage
-              </Badge>
-              <Badge className="bg-blue-500/20 text-blue-600 border-blue-500/30">
-                <Droplet className="w-3 h-3 mr-1" />
-                InfoWater Pro
-              </Badge>
+              {productConfigs.map((product) => {
+                const Icon = product.icon;
+                const isActive = visibleProducts[product.key];
+                return (
+                  <Badge 
+                    key={product.key}
+                    className={`cursor-pointer transition-all duration-200 ${product.badgeClass} ${
+                      !isActive ? 'opacity-40 line-through' : ''
+                    }`}
+                    onClick={() => toggleProduct(product.key)}
+                  >
+                    <Icon className="w-3 h-3 mr-1" />
+                    {product.label}
+                  </Badge>
+                );
+              })}
             </div>
           </div>
           
@@ -219,8 +271,8 @@ export const UserVoiceStats = () => {
               <AreaChart data={trendData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorImplemented" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                   </linearGradient>
                   <linearGradient id="colorIcm" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3}/>
@@ -249,50 +301,46 @@ export const UserVoiceStats = () => {
                   axisLine={false}
                 />
                 <Tooltip content={<CustomTooltip />} />
-                <Legend 
-                  wrapperStyle={{ paddingTop: '20px' }}
-                  formatter={(value) => {
-                    const labels: Record<string, string> = {
-                      implemented: 'Implemented',
-                      icm: 'ICM InfoWorks',
-                      infoDrainage: 'InfoDrainage',
-                      infoWaterPro: 'InfoWater Pro'
-                    };
-                    return <span className="text-sm text-muted-foreground">{labels[value] || value}</span>;
-                  }}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="implemented" 
-                  stroke="#10b981" 
-                  strokeWidth={2}
-                  fillOpacity={1} 
-                  fill="url(#colorImplemented)" 
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="icm" 
-                  stroke="hsl(var(--primary))" 
-                  strokeWidth={2}
-                  fillOpacity={1} 
-                  fill="url(#colorIcm)" 
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="infoDrainage" 
-                  stroke="hsl(var(--secondary))" 
-                  strokeWidth={2}
-                  fillOpacity={1} 
-                  fill="url(#colorInfoDrainage)" 
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="infoWaterPro" 
-                  stroke="#3b82f6" 
-                  strokeWidth={2}
-                  fillOpacity={1} 
-                  fill="url(#colorInfoWater)" 
-                />
+                {visibleProducts.implemented && (
+                  <Area 
+                    type="monotone" 
+                    dataKey="implemented" 
+                    stroke="#10b981" 
+                    strokeWidth={2}
+                    fillOpacity={1} 
+                    fill="url(#colorImplemented)" 
+                  />
+                )}
+                {visibleProducts.icm && (
+                  <Area 
+                    type="monotone" 
+                    dataKey="icm" 
+                    stroke="hsl(var(--primary))" 
+                    strokeWidth={2}
+                    fillOpacity={1} 
+                    fill="url(#colorIcm)" 
+                  />
+                )}
+                {visibleProducts.infoDrainage && (
+                  <Area 
+                    type="monotone" 
+                    dataKey="infoDrainage" 
+                    stroke="hsl(var(--secondary))" 
+                    strokeWidth={2}
+                    fillOpacity={1} 
+                    fill="url(#colorInfoDrainage)" 
+                  />
+                )}
+                {visibleProducts.infoWaterPro && (
+                  <Area 
+                    type="monotone" 
+                    dataKey="infoWaterPro" 
+                    stroke="#3b82f6" 
+                    strokeWidth={2}
+                    fillOpacity={1} 
+                    fill="url(#colorInfoWater)" 
+                  />
+                )}
               </AreaChart>
             </ResponsiveContainer>
           </div>
