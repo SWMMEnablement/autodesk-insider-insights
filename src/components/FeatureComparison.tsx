@@ -15,6 +15,7 @@ interface Product {
   icon: React.ElementType;
   color: string;
   description: string;
+  bestFor: string;
 }
 
 interface Feature {
@@ -31,25 +32,29 @@ const products: Product[] = [
     name: "ICM Ultimate", 
     icon: Waves, 
     color: "text-accent",
-    description: "Flood, Sewer & Combined"
+    description: "Flood, Sewer & Combined",
+    bestFor: "Municipal utilities, large-scale flood modeling, combined sewer systems"
   },
   { 
     name: "InfoDrainage", 
     icon: Droplets, 
     color: "text-secondary-foreground",
-    description: "Site Drainage & SuDS"
+    description: "Site Drainage & SuDS",
+    bestFor: "Land developers, civil engineers, green infrastructure projects"
   },
   { 
     name: "XPSWMM", 
     icon: Zap, 
     color: "text-primary",
-    description: "EPA SWMM Interface"
+    description: "EPA SWMM Interface",
+    bestFor: "EPA compliance, FEMA studies, regulatory submissions"
   },
   { 
     name: "InfoWater Pro", 
     icon: Droplet, 
     color: "text-blue-500",
-    description: "Water Distribution"
+    description: "Water Distribution",
+    bestFor: "Water utilities, pressure management, distribution network optimization"
   },
 ];
 
@@ -173,6 +178,19 @@ export const FeatureComparison = () => {
                       ))}
                   </>
                 ))}
+                {/* Best For Row */}
+                <TableRow className="bg-accent/10 hover:bg-accent/15 border-t-2 border-accent/20">
+                  <TableCell className="font-bold text-foreground text-sm py-4">
+                    Best For
+                  </TableCell>
+                  {products.map((product) => (
+                    <TableCell key={`best-${product.name}`} className="text-center py-4">
+                      <p className="text-xs text-muted-foreground leading-relaxed max-w-[140px] mx-auto">
+                        {product.bestFor}
+                      </p>
+                    </TableCell>
+                  ))}
+                </TableRow>
               </TableBody>
             </Table>
           </div>
