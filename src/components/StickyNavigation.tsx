@@ -1,27 +1,26 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { 
-  Calculator, 
-  Users, 
+  Target,
+  Heart,
   Monitor, 
   MessageSquare, 
   Rocket, 
   HelpCircle, 
-  Heart,
   BookOpen,
   Menu,
   X,
-  GitCompare
+  BarChart3
 } from "lucide-react";
 
 const navItems = [
-  { id: "roi-calculator", label: "ROI Calculator", icon: Calculator },
-  { id: "persona-pathways", label: "Pathways", icon: Users },
-  { id: "workflow-comparison", label: "Workflow", icon: GitCompare },
+  { id: "personal-pledge", label: "My Pledge", icon: Target },
+  { id: "my-values", label: "My Values", icon: Heart },
+  { id: "comparison", label: "Compare", icon: BarChart3 },
   { id: "software-portfolio", label: "Software", icon: Monitor },
   { id: "whats-new", label: "What's New", icon: Rocket },
   { id: "trenches-timeline", label: "Timeline", icon: MessageSquare },
-  { id: "future-vision", label: "Future", icon: HelpCircle },
+  { id: "future-vision", label: "Future", icon: Rocket },
   { id: "objections-faq", label: "FAQ", icon: HelpCircle },
   { id: "personal-reasons", label: "Personal", icon: Heart },
   { id: "resources", label: "Resources", icon: BookOpen },
@@ -87,8 +86,8 @@ export const StickyNavigation = () => {
                 isScrolled ? "text-foreground" : "text-white"
               }`}
             >
-              <span className="hidden sm:inline">Autodesk Insider</span>
-              <span className="sm:hidden">AEP</span>
+              <span className="hidden sm:inline">My 5-Year Commitment</span>
+              <span className="sm:hidden">Chronicle</span>
             </button>
 
             {/* Desktop Nav Items */}

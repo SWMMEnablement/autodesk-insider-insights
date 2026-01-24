@@ -1,75 +1,78 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Settings, 
+  Wrench, 
   TrendingUp, 
-  Shield, 
+  Heart, 
   Zap, 
   Users, 
-  Target 
+  Award 
 } from "lucide-react";
 
 const reasons = [
   {
     id: "A",
-    title: "Professional Workflow Integration",
-    description: "Seamless integration between different Autodesk tools creates a comprehensive workflow that enhances productivity and reduces project delivery time.",
-    icon: Settings,
-    highlight: "Workflow Efficiency"
+    title: "My Workflow, My Investment",
+    description: "Paying for these tools ensures my workflow remains seamless and under my control. As a subscriber, I'm not dependent on employer-provided access.",
+    icon: Wrench,
+    highlight: "Personal Ownership"
   },
   {
     id: "B", 
-    title: "Future-Proof Technology Investment",
-    description: "Staying current with the latest software versions ensures access to cutting-edge features and maintains compatibility with industry standards.",
+    title: "Staying Current, Staying Relevant",
+    description: "After 50 years in this field, I've learned that stagnation is the real risk. My subscription keeps me connected to how the software evolves.",
     icon: TrendingUp,
-    highlight: "Technology Leadership"
+    highlight: "Continuous Growth"
   },
   {
     id: "C",
-    title: "Data Security & Compliance",
-    description: "Enterprise-grade security features and compliance tools protect sensitive project data while meeting industry regulatory requirements.",
-    icon: Shield,
-    highlight: "Security First"
+    title: "Skin in the Game",
+    description: "When I report a bug or request a feature, I do so as a paying customer. That changes the conversation. I have stake in seeing improvements.",
+    icon: Heart,
+    highlight: "Genuine Stake"
   },
   {
     id: "D",
-    title: "Performance & Scalability",
-    description: "Advanced computational capabilities and cloud integration enable handling of complex infrastructure projects with superior performance.",
+    title: "The Tools That Shaped My Career",
+    description: "From SWMM in the 1970s to ICM Ultimate today—these tools are part of my professional identity. Supporting them is supporting my own legacy.",
     icon: Zap,
-    highlight: "High Performance"
+    highlight: "Career Legacy"
   },
   {
     id: "E",
-    title: "Collaborative Excellence",
-    description: "Multi-user environments and real-time collaboration features facilitate better team coordination and project management.",
+    title: "Community & Contribution",
+    description: "My subscription enables me to participate fully in forums, User Voice, and beta programs—not as an employee, but as a fellow user.",
     icon: Users,
-    highlight: "Team Collaboration"
+    highlight: "Community Voice"
   },
   {
     id: "F",
-    title: "Strategic Business Value",
-    description: "The combination of tools provides comprehensive solutions that deliver measurable ROI through improved project outcomes and efficiency gains.",
-    icon: Target,
-    highlight: "Business Impact"
+    title: "A Legacy of Support",
+    description: "My subscription is a vote of confidence in the software's future—a legacy I'm building year by year. At 80, I want to say I believed in these tools.",
+    icon: Award,
+    highlight: "Long-term Vision"
   }
 ];
 
 export const ReasonsSection = () => {
   return (
-    <section className="py-20 bg-background">
+    <section id="my-values" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
+            Personal Values
+          </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Six Key Investment Reasons
+            What This Subscription Means to Me
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive analysis of why these Autodesk subscriptions deliver exceptional value 
-            for engineering professionals and infrastructure projects.
+            These aren't investment reasons for you—they're my personal values. 
+            Why I choose to pay when I don't have to.
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => {
+          {reasons.map((reason) => {
             const Icon = reason.icon;
             return (
               <Card 
@@ -109,7 +112,7 @@ export const ReasonsSection = () => {
         <div className="text-center mt-16">
           <Card className="inline-block p-6 bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
             <p className="text-lg font-semibold text-foreground">
-              Each reason represents a strategic investment in professional excellence and project success.
+              Each reason reflects a personal choice—not a sales pitch.
             </p>
           </Card>
         </div>
