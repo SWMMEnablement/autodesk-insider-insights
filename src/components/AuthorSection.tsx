@@ -27,9 +27,9 @@ export const AuthorSection = () => {
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-foreground">The Tools in My Toolkit</h3>
                 <p className="text-muted-foreground">
-                  My personal subscription includes the software that has defined my 50-year career: from SWMM in the 1970s 
-                  at the University of Florida, through the Innovyze era, to today's integrated Autodesk suite. These aren't 
-                  just tools—they're part of my professional identity.
+                  I've been an AutoCAD user since 1985, when I first used it as a graduate student at the University of Florida. 
+                  From SWMM in the 1970s, through Civil 3D, the Innovyze era, to today's integrated Autodesk suite—these tools 
+                  have been constants in my 50-year career. They're not just software; they're part of my professional identity.
                 </p>
               </div>
 
