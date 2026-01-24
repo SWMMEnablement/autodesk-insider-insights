@@ -13,7 +13,8 @@ const subscriptionYears = [
 
 const milestones = [
   { year: "1970s", label: "University of Florida", description: "First encounter with SWMM" },
-  { year: "1980-2020", label: "Career Milestones", description: "40+ years in water modeling" },
+  { year: "1985", label: "AutoCAD Begins", description: "Started using AutoCAD as a UF grad student" },
+  { year: "1985-2020", label: "Career Milestones", description: "40+ years in water modeling & CAD" },
   { year: "2021", label: "Personal Subscription", description: "Started paying as an employee" },
   { year: "2026", label: "Present Day", description: "5 years in, going strong" },
   { year: "2031", label: "10-Year Goal", description: "A decade of personal commitment" },
