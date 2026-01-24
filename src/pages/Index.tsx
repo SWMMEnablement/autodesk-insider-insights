@@ -1,7 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { AuthorSection } from "@/components/AuthorSection";
 import { ReasonsSection } from "@/components/ReasonsSection";
-import { ROICalculator } from "@/components/ROICalculator";
 import { PersonaPathways } from "@/components/PersonaPathways";
 import { WorkflowComparison } from "@/components/WorkflowComparison";
 import { SoftwareSection } from "@/components/SoftwareSection";
@@ -23,7 +22,6 @@ const Index = () => {
         <Hero />
         <AuthorSection />
         <ReasonsSection />
-        <ROICalculator />
         <PersonaPathways />
         <WorkflowComparison />
         <SoftwareSection />
