@@ -1,56 +1,22 @@
-# Welcome to your Lovable project
+# Autodesk Insider Insights
 
-## Project info
+Interactive explainer and comparison app for Autodesk Water tools, product changes, user concerns, and adoption decisions.
 
-**URL**: https://lovable.dev/projects/68363d04-1207-4d15-8b07-6ebdb11b8fd0
+## Overview
 
-## How can I edit this code?
+Autodesk Insider Insights is a browser-based app for exploring Autodesk water-related products, comparing capabilities, and organizing the questions that come up during evaluation and adoption.
 
-There are several ways of editing your application.
+The app is intended as a structured guide for understanding product positioning, changes over time, common objections, and decision points that affect practitioners working with hydraulic and water infrastructure software.
 
-**Use Lovable**
+## Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/68363d04-1207-4d15-8b07-6ebdb11b8fd0) and start prompting.
+- Product comparison views for Autodesk Water tools
+- Explanations of changes, updates, and positioning
+- Decision-support content for evaluation and adoption
+- Sections for common objections, questions, and concerns
+- Supporting material such as evidence, resources, and reference content
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Tech Stack
 
 This project is built with:
 
@@ -60,14 +26,44 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Getting Started
 
-Simply open [Lovable](https://lovable.dev/projects/68363d04-1207-4d15-8b07-6ebdb11b8fd0) and click on Share -> Publish.
+### Prerequisites
 
-## Can I connect a custom domain to my Lovable project?
+- Node.js
+- npm
 
-Yes, you can!
+### Install
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+git clone https://github.com/SWMMEnablement/autodesk-insider-insights.git
+cd autodesk-insider-insights
+npm install
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Run locally
+
+```bash
+npm run dev
+```
+
+## Repository Structure
+
+- `src/` — application source code
+- `public/` — static assets
+- `index.html` — app entry point
+- `vite.config.ts` — Vite configuration
+- `tailwind.config.ts` — Tailwind configuration
+- `components.json` — UI component configuration
+
+## Purpose
+
+This repository exists to make Autodesk Water product information easier to review in one place, especially for users comparing options, tracking changes, or trying to understand how different offerings fit specific workflows.
+
+## Suggested About Text
+
+Interactive explainer and comparison app for Autodesk Water tools, product changes, user concerns, and adoption decisions.
+
+## Status
+
+This repository is actively structured as a real application and should use a project-specific README instead of the default Lovable boilerplate.
