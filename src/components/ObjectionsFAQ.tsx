@@ -93,7 +93,7 @@ I'm not advising you to do the same. This is my choice.`
 - Hide it if I ever need to pause or stop
 - Make this about proving something to others
 
-**The goal:** Reach 80 with 15 consecutive years. But if I get to 12 and life intervenes? I'll document that too. This is a personal journal, not a contract.`
+**The goal:** Reach 75 in 2030 with 10 consecutive years documented. But if life intervenes before then? I'll document that too. This is a personal journal, not a contract.`
   }
 ];
 
