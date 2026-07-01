@@ -14,6 +14,7 @@ import { DepartureFAQ } from "@/components/DepartureFAQ";
 import { PersonalReasonsSection } from "@/components/PersonalReasonsSection";
 import { ResourcesSection } from "@/components/ResourcesSection";
 import { SocialProof } from "@/components/SocialProof";
+import { ConnectCTA } from "@/components/ConnectCTA";
 import { StickyNavigation } from "@/components/StickyNavigation";
 import { SummaryProvider, ExecutiveSummaryButton } from "@/components/ExecutiveSummary";
 
@@ -38,6 +39,7 @@ const Index = () => {
         <PersonalReasonsSection />
         <SocialProof />
         <ResourcesSection />
+        <ConnectCTA />
         <ExecutiveSummaryButton />
       </div>
     </SummaryProvider>
