@@ -12,7 +12,8 @@ const subscriptionYears = [
 ];
 
 const milestones = [
-  { year: "1970s", label: "University of Florida", description: "First encounter with SWMM" },
+  { year: "1976", label: "First SWMM Class", description: "Took a SWMM class at the University of Florida" },
+  { year: "1978", label: "Working on SWMM", description: "Began working on SWMM under Prof. Wayne Huber at UF" },
   { year: "1985", label: "AutoCAD Begins", description: "Started using AutoCAD as a UF grad student" },
   { year: "1985-2020", label: "Career Milestones", description: "40+ years in water modeling & CAD" },
   { year: "2021", label: "Personal Subscription", description: "Started paying as an employee" },
