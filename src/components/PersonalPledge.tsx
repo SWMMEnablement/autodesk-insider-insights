@@ -18,8 +18,7 @@ const milestones = [
   { year: "2021", label: "Personal Subscription", description: "Started paying as an employee" },
   { year: "May 2026", label: "Left Autodesk", description: "Departed as an employee — subscription continues" },
   { year: "2026", label: "Present Day", description: "5 years in as a paying subscriber, going strong" },
-  { year: "2031", label: "10-Year Goal", description: "A decade of personal commitment" },
-  { year: "2036", label: "15-Year Goal", description: "Age 80 milestone achieved" },
+  { year: "2030", label: "10-Year Goal", description: "Age 75 milestone — a decade of personal commitment" },
 ];
 
 export const PersonalPledge = () => {
