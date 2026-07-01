@@ -17,6 +17,9 @@ export const AuthorSection = () => {
                 <h2 className="text-3xl font-bold text-foreground">
                   From Employee to Independent Subscriber
                 </h2>
+                <p className="text-sm font-medium text-primary leading-snug">
+                  SWMM6 & SWMM5 Enablement · Small Business Owner, Autodesk AEC Collection & ICM InfoWorks, IWP, IFD · Chair, SWMM5+ TAC at CIMM · EWRI Stormwater Modeling Committee
+                </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   I have an unusual relationship with Autodesk software. From 2021 as an employee, I chose to pay for my own 
                   subscription—AEC Collection, InfoDrainage, and ICM Ultimate—even though I already had work access. On May 22, 2026, 
@@ -76,6 +79,20 @@ export const AuthorSection = () => {
                   <div>
                     <span className="font-semibold text-foreground">50+ Year Career</span>
                     <p className="text-xs text-muted-foreground">From SWMM to ICM Ultimate</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-primary/5 border border-primary/10">
+                  <Award className="w-6 h-6 text-primary" />
+                  <div>
+                    <span className="font-semibold text-foreground">Chair, SWMM5+ TAC</span>
+                    <p className="text-xs text-muted-foreground">CIMM · EWRI Stormwater Modeling Committee</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5 border border-accent/10">
+                  <Building2 className="w-6 h-6 text-accent" />
+                  <div>
+                    <span className="font-semibold text-foreground">Small Business Owner</span>
+                    <p className="text-xs text-muted-foreground">SWMM6 & SWMM5 Enablement</p>
                   </div>
                 </div>
               </div>
