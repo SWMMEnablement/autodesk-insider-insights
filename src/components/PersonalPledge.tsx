@@ -16,7 +16,8 @@ const milestones = [
   { year: "1985", label: "AutoCAD Begins", description: "Started using AutoCAD as a UF grad student" },
   { year: "1985-2020", label: "Career Milestones", description: "40+ years in water modeling & CAD" },
   { year: "2021", label: "Personal Subscription", description: "Started paying as an employee" },
-  { year: "2026", label: "Present Day", description: "5 years in, going strong" },
+  { year: "May 2026", label: "Left Autodesk", description: "Departed as an employee — subscription continues" },
+  { year: "2026", label: "Present Day", description: "5 years in as a paying subscriber, going strong" },
   { year: "2031", label: "10-Year Goal", description: "A decade of personal commitment" },
   { year: "2036", label: "15-Year Goal", description: "Age 80 milestone achieved" },
 ];

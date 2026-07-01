@@ -16,7 +16,7 @@ export const Hero = () => {
               </Badge>
               
               <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
-                My 5-Year Commitment: Why I Pay for Autodesk Software as an Employee
+                My 5-Year Commitment: Why I Still Pay for Autodesk Software After Leaving
               </h1>
               
               <p className="text-lg lg:text-xl text-white/90 leading-relaxed italic">
@@ -25,10 +25,11 @@ export const Hero = () => {
             </div>
             
             <p className="text-white/80 leading-relaxed">
-              For the past five years, I have personally paid for Autodesk subscriptions. Not because I have to, 
-              but because I choose to. This site documents that commitment—a personal investment in the software 
-              that has defined my 50-year career. My goal is simple: to continue as a paid user, and to be able 
-              to say at 80 that I've supported these tools for 15 straight years. This is my story.
+              For the past five years, I have personally paid for Autodesk subscriptions. I started as an employee 
+              who chose to pay anyway. On May 22, 2026, I left Autodesk—and my personal subscription continues. 
+              This site documents that commitment: a personal investment in the software that has defined my 50-year 
+              career. My goal is simple: to be able to say at 80 that I've supported these tools for 15 straight years. 
+              This is my story.
             </p>
             
             <div className="flex flex-wrap items-center gap-6 text-white/80">
