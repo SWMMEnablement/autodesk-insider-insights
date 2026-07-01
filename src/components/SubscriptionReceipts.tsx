@@ -198,7 +198,7 @@ export const SubscriptionReceipts = () => {
 
         <div className="text-center mt-8">
           <p className="text-sm text-muted-foreground italic">
-            All payment records are from my personal Autodesk account, separate from any employee benefits.
+            All payment records are from my personal Autodesk account—separate from any employee benefits I received before leaving Autodesk on May 22, 2026. The subscription continues.
           </p>
         </div>
       </div>
