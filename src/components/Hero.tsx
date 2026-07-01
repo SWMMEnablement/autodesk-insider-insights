@@ -29,7 +29,7 @@ export const Hero = () => {
               For the past five years, I have personally paid for Autodesk subscriptions. I started as an employee 
               who chose to pay anyway. On May 22, 2026, I left Autodesk—and my personal subscription continues. 
               This site documents that commitment: a personal investment in the software that has defined my 50-year 
-              career. My goal is simple: to be able to say at 80 that I've supported these tools for 15 straight years. 
+              career. My goal is simple: to be able to say at 75 that I've supported these tools for a decade straight. 
               This is my story.
             </p>
             
@@ -40,7 +40,7 @@ export const Hero = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
-                <span>Goal: 15 Years by Age 80</span>
+                <span>Goal: 10 Years by Age 75 (2030)</span>
               </div>
               <a 
                 href="mailto:robert.dickinson@gmail.com" 
