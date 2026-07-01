@@ -12,16 +12,16 @@ const faqs = [
   {
     id: "why-pay",
     icon: DollarSign,
-    question: "Why pay for software you get through work?",
+    question: "Why did you pay for software you got through work? And why continue after leaving?",
     answer: `This isn't about access—it's about principle.
 
-**As an employee,** I use our latest tools through my work account. That's a job benefit.
+**As an employee (2021–May 2026),** I used our latest tools through my work account. That was a job benefit. But I also chose to pay for my own subscription, because I wanted skin in the game as a customer, not just a developer.
 
-**As a subscriber,** I participate in the ecosystem as a user. I experience billing, renewals, licensing quirks—the same friction our customers feel.
+**As a subscriber (2021–present),** I participate in the ecosystem as a user. I experience billing, renewals, licensing quirks—the same friction our customers feel.
 
-**The dual role advantage:** When I give feedback, I'm not just speaking as a developer. I'm a customer who has skin in the game. The annual fee is my personal stake in the software's success.
+**After leaving Autodesk on May 22, 2026,** the subscription continues. My personal projects, consulting work, and ability to stay current never depended on my employment status—and that's exactly the point. The 5-year runway I built as a paying employee is now the foundation I stand on as a former employee.
 
-**It's also insurance:** If I ever leave Autodesk, my personal projects, my consulting work, my ability to stay current—none of that depends on my employment status.`
+**The annual fee is my personal stake in the software's success.** That doesn't change because my employment did.`
   },
   {
     id: "investment",
