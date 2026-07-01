@@ -10,6 +10,7 @@ import { UserVoiceStats } from "@/components/UserVoiceStats";
 import { TrenchesTimeline } from "@/components/TrenchesTimeline";
 import { FutureVisionSection } from "@/components/FutureVisionSection";
 import { ObjectionsFAQ } from "@/components/ObjectionsFAQ";
+import { DepartureFAQ } from "@/components/DepartureFAQ";
 import { PersonalReasonsSection } from "@/components/PersonalReasonsSection";
 import { ResourcesSection } from "@/components/ResourcesSection";
 import { StickyNavigation } from "@/components/StickyNavigation";
@@ -32,6 +33,7 @@ const Index = () => {
         <TrenchesTimeline />
         <FutureVisionSection />
         <ObjectionsFAQ />
+        <DepartureFAQ />
         <PersonalReasonsSection />
         <ResourcesSection />
         <ExecutiveSummaryButton />
