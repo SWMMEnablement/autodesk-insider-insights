@@ -15,12 +15,12 @@ export const AuthorSection = () => {
                   About the Author
                 </Badge>
                 <h2 className="text-3xl font-bold text-foreground">
-                  The Dual Perspective
+                  From Employee to Independent Subscriber
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  I have an unusual relationship with Autodesk software. As an employee, I have access to tools through work. 
-                  But since 2021, I've also maintained my own paid subscription—AEC Collection, InfoDrainage, and ICM Ultimate. 
-                  This isn't about access. It's about principle.
+                  I have an unusual relationship with Autodesk software. From 2021 as an employee, I chose to pay for my own 
+                  subscription—AEC Collection, InfoDrainage, and ICM Ultimate—even though I already had work access. On May 22, 2026, 
+                  I left Autodesk. My personal subscription continues. This was never about access. It's about principle.
                 </p>
               </div>
               
@@ -60,15 +60,15 @@ export const AuthorSection = () => {
                 <div className="flex items-center gap-3 p-3 rounded-lg bg-primary/5 border border-primary/10">
                   <Building2 className="w-6 h-6 text-primary" />
                   <div>
-                    <span className="font-semibold text-foreground">Autodesk Employee</span>
-                    <p className="text-xs text-muted-foreground">Professional role & access</p>
+                    <span className="font-semibold text-foreground">Former Autodesk Employee</span>
+                    <p className="text-xs text-muted-foreground">Departed May 22, 2026</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5 border border-accent/10">
                   <Award className="w-6 h-6 text-accent" />
                   <div>
                     <span className="font-semibold text-foreground">Personal Subscriber</span>
-                    <p className="text-xs text-muted-foreground">5 years and counting</p>
+                    <p className="text-xs text-muted-foreground">Since 2021 — still going</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 border border-secondary/30">
