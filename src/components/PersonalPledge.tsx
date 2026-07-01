@@ -77,8 +77,8 @@ export const PersonalPledge = () => {
                 <div className="text-xs text-muted-foreground">Years Strong</div>
               </div>
               <div className="p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/10">
-                <div className="text-2xl font-bold text-emerald-600">15</div>
-                <div className="text-xs text-muted-foreground">Year Goal</div>
+                <div className="text-2xl font-bold text-emerald-600">10</div>
+                <div className="text-xs text-muted-foreground">Year Goal (2030)</div>
               </div>
             </div>
           </Card>
@@ -124,9 +124,9 @@ export const PersonalPledge = () => {
 
         {/* Looking Ahead Quote */}
         <Card className="p-8 bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20 text-center">
-          <h3 className="text-xl font-bold text-foreground mb-4">Looking Ahead to 80</h3>
+          <h3 className="text-xl font-bold text-foreground mb-4">Looking Ahead to 75</h3>
           <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed italic">
-            "When I look at this site in 2036, I want to see the history of a promise kept. 
+            "When I look at this site in 2030 at age 75, I want to see the history of a promise kept. 
             Each year's renewal is a chapter. The bugs fixed, the features added, the projects 
             completed—all witnessed not just as an employee, but as a committed user."
           </p>
