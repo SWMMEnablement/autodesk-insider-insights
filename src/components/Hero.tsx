@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Heart, Mail } from "lucide-react";
+import { Calendar, Heart, Mail, Linkedin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import heroCover from "@/assets/icm-infoworks-banner.jpg";
 
 export const Hero = () => {
@@ -48,6 +49,17 @@ export const Hero = () => {
                 <Mail className="w-5 h-5" />
                 <span>robert.dickinson@gmail.com</span>
               </a>
+            </div>
+
+            <div>
+              <Button
+                size="lg"
+                onClick={() => window.open("https://www.linkedin.com/in/robertdickinson/", "_blank", "noopener,noreferrer")}
+                className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-xl font-semibold"
+              >
+                <Linkedin className="w-5 h-5 mr-2" />
+                Connect with me on LinkedIn
+              </Button>
             </div>
           </div>
           
